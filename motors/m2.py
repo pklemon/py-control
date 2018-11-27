@@ -1,6 +1,9 @@
+#!/usr/bin/env python
+# coding: utf8
+from __future__ import division
+
 from time import sleep
 import RPi.GPIO as GPIO
-from __future__ import division
 
 GPIO.setmode(GPIO.BCM)
 
