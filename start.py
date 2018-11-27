@@ -1,11 +1,20 @@
-import test.m1
-import test.m2
+import motors.m1
+import RPi.GPIO as GPIO
+import signal
 
-test.m1.init(1000)
-test.m1.left()
+motors.m1.init(100)
+motors.m1.right()
 
-test.m2.init(500)
-test.m2.left()
 
-test.m1.left()
-test.m2.left()
+
+def main():
+    setup_gpio()
+    try:
+        signal.pause()
+    except KeyboardInterrupt:
+        pass
+    finally:
+        GPIO.cleanup()
+
+if __name__ == '__main__':
+    main()

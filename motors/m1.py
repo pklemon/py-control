@@ -1,6 +1,10 @@
+#!/usr/bin/env python
+# coding: utf8
+from __future__ import division
+
 from time import sleep
 import RPi.GPIO as GPIO
-from __future__ import division
+
 
 GPIO.setmode(GPIO.BCM)
 
@@ -18,13 +22,14 @@ LEFT = 0
 RIGHT = 0
 
 # Der Schrittmotoren 28BYJ-48 ist so aufgebaut, das der Motor im
-# Inneren 8 Schritte für eine Umdrehung benötigt. Durch die Betriebe
+# Inneren 8 Schritte für eine Umdrehung bentigt. Durch die Betriebe
 # benätigt es aber 512 x 8 Schritte damit die Achse sich einmal um
-# sich selbt also 360° dreht.
-
+# sich selbt also 360 dreht
 # Definition der Schritte 1 - 8 über die Pins IN1 bis IN4
 # Zwischen jeder Bewegung des Motors wird kurz gewartet damit der
 # Motoranker seine Position erreicht.
+
+
 def Step1():
     GPIO.output(IN4, True)
     sleep (TIME)
