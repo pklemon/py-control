@@ -1,5 +1,6 @@
 from time import sleep
 import RPi.GPIO as GPIO
+from __future__ import division
 
 GPIO.setmode(GPIO.BCM)
 
