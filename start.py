@@ -3,7 +3,8 @@ import RPi.GPIO as GPIO
 import signal
 
 motors.m1.init(100)
-motors.m1.right()
+motors.m1.right(1)
+motors.m1.stop()
 
 
 

@@ -79,10 +79,9 @@ def Step8():
     GPIO.output(IN1, False)
 
 # Umdrehung links herum
-def left():
-  global LEFT
-  LEFT = 1;
-  while LEFT >= 1:
+def left(rotations):
+  cycles = ratations * 512
+  for x in range(cycles)
     Step1()
     Step2()
     Step3()
@@ -93,10 +92,9 @@ def left():
     Step8()
 
 # Umdrehung rechts herum
-def right():
-  global RIGHT
-  RIGHT = 1
-  while RIGHT >= 1:
+def right(rotations):
+  cycles = ratations * 512
+  for x in range(cycles)
     Step8()
     Step7()
     Step6()
@@ -107,10 +105,6 @@ def right():
     Step1()
 
 def stop():
-  global RIGHT
-  global LEFT
-  LEFT = 0
-  RIGHT = 0
   GPIO.output(IN1, False)
   GPIO.output(IN2, False)
   GPIO.output(IN3, False)
