@@ -24,7 +24,8 @@ def szene1():
 def main():
     try:
         intro()
-        szene1()    except KeyboardInterrupt:
+        szene1()
+    except KeyboardInterrupt:
         pass
     finally:
         GPIO.cleanup()
