@@ -17,17 +17,7 @@ IN4=7 # I
 # Wartezeit regelt die Geschwindigkeit wie schnell sich der Motor
 # dreht.
 TIME = 0.001
-LEFT = 0
-RIGHT = 0
 
-# Der Schrittmotoren 28BYJ-48 ist so aufgebaut, das der Motor im
-# Inneren 8 Schritte für eine Umdrehung benötigt. Durch die Betriebe
-# benätigt es aber 512 x 8 Schritte damit die Achse sich einmal um
-# sich selbt also 360° dreht.
-
-# Definition der Schritte 1 - 8 über die Pins IN1 bis IN4
-# Zwischen jeder Bewegung des Motors wird kurz gewartet damit der
-# Motoranker seine Position erreicht.
 def Step1():
     GPIO.output(IN4, True)
     sleep (TIME)
@@ -77,10 +67,9 @@ def Step8():
     GPIO.output(IN1, False)
 
 # Umdrehung links herum
-def left():
-  global LEFT
-  LEFT = 1;
-  while LEFT >= 1:
+def left(rotations):
+  cycles = rotations * 512
+  for x in range(cycles):
     Step1()
     Step2()
     Step3()
@@ -91,10 +80,9 @@ def left():
     Step8()
 
 # Umdrehung rechts herum
-def right():
-  global RIGHT
-  RIGHT = 1
-  while RIGHT >= 1:
+def right(rotations):
+  cycles = rotations * 512
+  for x in range(cycles):
     Step8()
     Step7()
     Step6()
@@ -105,10 +93,6 @@ def right():
     Step1()
 
 def stop():
-  global RIGHT
-  global LEFT
-  LEFT = 0
-  RIGHT = 0
   GPIO.output(IN1, False)
   GPIO.output(IN2, False)
   GPIO.output(IN3, False)

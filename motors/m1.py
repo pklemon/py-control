@@ -18,8 +18,6 @@ IN4 = 26 # IN4
 # Wartezeit regelt die Geschwindigkeit wie schnell sich der Motor
 # dreht.
 TIME = 0.001
-LEFT = 0
-RIGHT = 0
 
 # Der Schrittmotoren 28BYJ-48 ist so aufgebaut, das der Motor im
 # Inneren 8 Schritte für eine Umdrehung bentigt. Durch die Betriebe
