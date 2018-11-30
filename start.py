@@ -1,6 +1,7 @@
 from threading import Thread
 import signal
 import RPi.GPIO as GPIO
+from time import sleep
 
 import motors.m1
 import motors.m2
@@ -19,59 +20,72 @@ def szene1():
     light.control.l1_on()
     sound.control.text2()
 
-    motors.m1.init(100)
-    T = Thread(target=motors.m1.right, args=[1])
+    motors.m1.init(500)
+    T = Thread(target=motors.m1.right, args=[3])
     T.start()
 
     sound.control.lied1()
     light.control.l1_off()
 
     motors.m1.init(1000)
-    T = Thread(target=motors.m1.left, args=[1])
+    T = Thread(target=motors.m1.left, args=[3])
     T.start()
-    sound.control.text3()
-
 
 def szene2():
     light.control.l2_on()
-    motors.m2.init(100)
-    T = Thread(target=motors.m2.right, args=[1])
+    sound.control.text3()
+
+    motors.m2.init(1000)
+    T = Thread(target=motors.m2.right, args=[28])
     T.start()
 
     sound.control.lied2()
 
+    motors.m2.init(1000)
+    T = Thread(target=motors.m2.right, args=[12])
+    T.start()
+
+    sleep(10)
+
     light.control.l2_off()
 
-    motors.m2.init(1000)
-    T = Thread(target=motors.m2.right, args=[1])
-    T.start()
     sound.control.text4()
 
 def szene3():
     light.control.l3_on()
     motors.m3.init(1000)
-    motors.m3.right(0.5)
+    motors.m3.right(12)
     sound.control.lied3_1()
-    motors.m3.right(0.5)
+    motors.m3.right(2)
     sound.control.lied3_2()
-    motors.m3.right(0.5)
+    motors.m3.right(4)
     sound.control.lied3_3()
+
+    motors.m3.init(1000)
+    T = Thread(target=motors.m3.right, args=[12])
+    T.start()
+
+    sleep(10)
+
     light.control.l3_off()
 
-
-def szene5():
+def szene4():
     light.control.l4_on()
     sound.control.text5()
     light.control.l4_off()
-    
+
+def szene5():
     sound.control.text6()
     light.control.l5_on()
 
-    motors.m4.init(1000)
-    T = Thread(target=motors.m4.right, args=[1])
+    motors.m4.init(800)
+    T = Thread(target=motors.m4.right, args=[3])
     T.start()
+
     sound.control.lied4()
-    T = Thread(target=motors.m4.left, args=[1])
+
+    motors.m4.init(1000)
+    T = Thread(target=motors.m4.left, args=[3])
     T.start()
 
     light.control.l5_off()
@@ -90,7 +104,7 @@ def szene6():
 
     sleep(10)
 
-    ligth.control.l6_off()
+    light.control.l6_off()
 
     motors.m5.init(1000)
     T = Thread(target=motors.m5.left, args=[1])
