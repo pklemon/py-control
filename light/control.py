@@ -3,7 +3,7 @@
 
 import pigpio
 
-pi = pigpio.pi('10.10.1.2')
+pi = pigpio.pi('10.10.1.4')
 
 L1 = 26
 L2 = 19
