@@ -79,13 +79,13 @@ def szene5():
     light.control.l5_on()
 
     motors.m4.init(800)
-    T = Thread(target=motors.m4.right, args=[3])
+    T = Thread(target=motors.m4.right, args=[2.25])
     T.start()
 
     sound.control.lied4()
 
     motors.m4.init(1000)
-    T = Thread(target=motors.m4.left, args=[3])
+    T = Thread(target=motors.m4.left, args=[2.25])
     T.start()
 
     light.control.l5_off()
@@ -115,7 +115,7 @@ def szene6():
     T2.start()
 
     
-def licht_off():
+def licht_on():
     light.control.l1_on()
     light.control.l2_on()
     light.control.l3_on()
@@ -123,7 +123,7 @@ def licht_off():
     light.control.l5_on()
     light.control.l6_on()
 
-def licht_on():
+def licht_off():
     light.control.l1_off()
     light.control.l2_off()
     light.control.l3_off()
@@ -143,6 +143,7 @@ def main():
         szene2()
         szene3()
         szene4()
+        sleep(3)
         szene5()
         szene6()
     except KeyboardInterrupt:

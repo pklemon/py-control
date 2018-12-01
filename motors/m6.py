@@ -68,7 +68,7 @@ def Step8():
 
 # Umdrehung links herum
 def left(rotations):
-  cycles = rotations * 512
+  cycles = int(rotations * 512)
   for x in range(cycles):
     Step1()
     Step2()
@@ -81,7 +81,7 @@ def left(rotations):
 
 # Umdrehung rechts herum
 def right(rotations):
-  cycles = rotations * 512
+  cycles = int(rotations * 512)
   for x in range(cycles):
     Step8()
     Step7()
