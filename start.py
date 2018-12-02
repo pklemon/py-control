@@ -137,6 +137,7 @@ def licht_on():
     light.control.l4_on()
     light.control.l5_on()
     light.control.l6_on()
+    light.control.l7_on()
 
 def licht_off():
     light.control.l1_off()
@@ -145,6 +146,7 @@ def licht_off():
     light.control.l4_off()
     light.control.l5_off()
     light.control.l6_off()
+    light.control.l7_off()
 
 
 def main():
