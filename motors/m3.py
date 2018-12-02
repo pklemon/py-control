@@ -18,12 +18,6 @@ IN4=17 # I
 # dreht.
 TIME = 0.001
 
-
-GPIO.setup(IN1,GPIO.OUT,0)
-GPIO.setup(IN2,GPIO.OUT,0)
-GPIO.setup(IN3,GPIO.OUT,0)
-GPIO.setup(IN4,GPIO.OUT,0)
-
 def Step1():
     GPIO.output(IN4, True)
     sleep (TIME)
