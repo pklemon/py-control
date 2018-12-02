@@ -11,6 +11,8 @@ L3 = 13
 L4 = 6
 L5 = 5
 L6 = 11
+L7 = 9
+
 
 def l1_on():
   pi.write(L1, 1)
@@ -30,6 +32,9 @@ def l5_on():
 def l6_on():
   pi.write(L6, 1)
 
+def l7_on():
+  pi.write(L7, 0)
+
 def l1_off():
   pi.write(L1, 0)
 
@@ -47,3 +52,6 @@ def l5_off():
 
 def l6_off():
   pi.write(L6, 0)
+
+def l7_off():
+  pi.write(L7, 0)

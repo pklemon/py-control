@@ -83,6 +83,7 @@ def szene4():
 def szene5():
     sound.control.text6()
     light.control.l5_on()
+    light.control.l7_on()
 
     motors.m4.init(800)
     T = Thread(target=motors.m4.right, args=[2.25])
@@ -95,23 +96,27 @@ def szene5():
     T.start()
 
     light.control.l5_off()
+    light.control.l7_off()
 
 def szene6():
     light.control.l6_on()
     sound.control.text7()
 
-    motors.m5.init(100)
-    T = Thread(target=motors.m5.left, args=[12.5])
-    T.start()
-
-    motors.m6.init(100)
-    T2 = Thread(target=motors.m6.right, args=[8.5])
+    motors.m5.init(1000)
+    T2 = Thread(target=motors.m5.left, args=[12.5])
     T2.start()
 
-    sleep(10)
+    sleep(15)
 
+    motors.m6.init(1000)
+    T0 = Thread(target=motors.m6.right, args=[8.5])
+    T0.start()
+
+    sound.control.lied5()
+
+    sleep(5)
+    
     light.control.l6_off()
-
 
     motors.m6.init(1000)
     T2 = Thread(target=motors.m6.left, args=[8.5])
@@ -122,7 +127,6 @@ def szene6():
 
     motors.m5.stop()
     motors.m6.stop()
-
     sleep(5)
 
     
