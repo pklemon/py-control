@@ -53,8 +53,6 @@ def szene2():
     
     sleep(5)
 
-    sound.control.text4()
-
 def szene3():
     light.control.l3_on()
     T = Thread(target=sound.control.text4)
@@ -137,6 +135,7 @@ def licht_on():
     light.control.l4_on()
     light.control.l5_on()
     light.control.l6_on()
+    light.control.l7_on()
 
 def licht_off():
     light.control.l1_off()
@@ -145,6 +144,7 @@ def licht_off():
     light.control.l4_off()
     light.control.l5_off()
     light.control.l6_off()
+    light.control.l7_off()
 
 def mainSequence():
   licht_off()
@@ -158,8 +158,8 @@ def mainSequence():
   szene5()
   szene6()
 
-	sleep(15)
-	licht_on()
+  sleep(15)
+  licht_on()
 
 def kbevent(event):
   global running
@@ -250,4 +250,4 @@ running = True
 while running:
   sleep(0.1)
 
-hookman.cancel()
+hm.cancel()

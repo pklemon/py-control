@@ -53,8 +53,6 @@ def szene2():
     
     sleep(5)
 
-    sound.control.text4()
-
 def szene3():
     light.control.l3_on()
     T = Thread(target=sound.control.text4)
