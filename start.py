@@ -51,25 +51,27 @@ def szene2():
 
     light.control.l2_off()
     
-    sleep(20)
+    sleep(5)
 
     sound.control.text4()
 
 def szene3():
     light.control.l3_on()
+    T = Thread(target=sound.control.text4)
+    T.start()
     motors.m3.init(1000)
-    motors.m3.right(12)
+    motors.m3.right(11)
     sound.control.lied3_1()
-    motors.m3.right(2)
+    motors.m3.right(5)
     sound.control.lied3_2()
-    motors.m3.right(4)
+    motors.m3.right(6)
     sound.control.lied3_3()
 
     motors.m3.init(1000)
-    T = Thread(target=motors.m3.right, args=[12])
+    T = Thread(target=motors.m3.right, args=[20.5])
     T.start()
 
-    sleep(10)
+    sleep(20)
 
     light.control.l3_off()
 
@@ -143,9 +145,8 @@ def licht_off():
 
 def main():
     try:
-        
         licht_off()
-
+        sleep(5)
         intro()
         szene1()
         szene2()
@@ -154,6 +155,9 @@ def main():
         sleep(3)
         szene5()
         szene6()
+
+        sleep(15)
+        licht_on()
     except KeyboardInterrupt:
         pass
     finally:

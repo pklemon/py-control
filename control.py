@@ -13,7 +13,6 @@ import motors.m6
 import sound.control
 import light.control
 
-
 def intro():
     sound.control.text1()
 
@@ -51,7 +50,10 @@ def szene2():
     sleep(15)
 
     light.control.l2_off()
-    sleep(20)
+    
+    sleep(5)
+
+    sound.control.text4()
 
 def szene3():
     light.control.l3_on()
@@ -99,24 +101,29 @@ def szene6():
     sound.control.text7()
 
     motors.m5.init(100)
-    T = Thread(target=motors.m5.right, args=[1])
+    T = Thread(target=motors.m5.left, args=[12.5])
     T.start()
 
     motors.m6.init(100)
-    T2 = Thread(target=motors.m6.right, args=[1])
+    T2 = Thread(target=motors.m6.right, args=[8.5])
     T2.start()
 
     sleep(10)
 
     light.control.l6_off()
 
-    motors.m5.init(1000)
-    T = Thread(target=motors.m5.left, args=[1])
-    T.start()
 
     motors.m6.init(1000)
-    T2 = Thread(target=motors.m6.left, args=[1])
+    T2 = Thread(target=motors.m6.left, args=[8.5])
     T2.start()
+
+    motors.m5.init(1000)
+    motors.m5.right(12.5)
+
+    motors.m5.stop()
+    motors.m6.stop()
+
+    sleep(5)
 
     
 def licht_on():
@@ -137,6 +144,7 @@ def licht_off():
 
 def mainSequence():
   licht_off()
+  sleep(5)
   intro()
   szene1()
   szene2()
@@ -145,8 +153,9 @@ def mainSequence():
   sleep(3)
   szene5()
   szene6()
-  sleep(10)
-  licht_on()
+
+	sleep(15)
+	licht_on()
 
 def kbevent(event):
   global running
