@@ -154,75 +154,75 @@ def kbevent(event):
   code = event.ScanCode
   
 
-  if code == 90
+  if code == 90:
     running = False
 
-  if code == 89
+  if code == 89:
     licht_on()
   
-  if code == 91
+  if code == 91:
     licht_off()
 
-  if code == 104
+  if code == 104:
     s = Thread(target=mainSequence)
     s.start()
 
-  if code == 77
+  if code == 77:
     motors.m1.init(1000)
     motors.m1.left(0.25)
     motors.m1.stop()
   
-  if code == 106
+  if code == 106:
     motors.m1.init(1000)
     motors.m1.right(0.25)
     motors.m1.stop()
 
-  if code == 63
+  if code == 63:
     motors.m2.init(1000)
     motors.m2.left(0.25)
     motors.m2.stop()
   
-  if code == 82
+  if code == 82:
     motors.m2.init(1000)
     motors.m2.right(0.25)
     motors.m2.stop()
 
-  if code == 79
+  if code == 79:
     motors.m3.init(1000)
     motors.m3.left(0.25)
     motors.m3.stop()
   
-  if code == 80
+  if code == 80:
     motors.m3.init(1000)
     motors.m3.right(0.25)
     motors.m3.stop()
 
-  if code == 81
+  if code == 81:
     motors.m4.init(1000)
     motors.m4.left(0.25)
     motors.m4.stop()
   
-  if code == 86
+  if code == 86:
     motors.m4.init(1000)
     motors.m4.right(0.25)
     motors.m4.stop()
   
-  if code == 83
+  if code == 83:
     motors.m5.init(1000)
     motors.m5.left(0.25)
     motors.m5.stop()
   
-  if code == 84
+  if code == 84:
     motors.m5.init(1000)
     motors.m5.right(0.25)
     motors.m5.stop()
 
-  if code == 85
+  if code == 85:
     motors.m6.init(1000)
     motors.m6.left(0.25)
     motors.m6.stop()
   
-  if code == 22
+  if code == 22:
     motors.m6.init(1000)
     motors.m6.right(0.25)
     motors.m6.stop()
@@ -234,7 +234,7 @@ hm.HookKeyboard()
 hm.start()
 
 running = True
-while running
+while running:
   sleep(0.1)
 
 hookman.cancel()

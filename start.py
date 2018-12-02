@@ -99,24 +99,29 @@ def szene6():
     sound.control.text7()
 
     motors.m5.init(100)
-    T = Thread(target=motors.m5.right, args=[1])
+    T = Thread(target=motors.m5.left, args=[12.5])
     T.start()
 
     motors.m6.init(100)
-    T2 = Thread(target=motors.m6.right, args=[1])
+    T2 = Thread(target=motors.m6.right, args=[8.5])
     T2.start()
 
     sleep(10)
 
     light.control.l6_off()
 
-    motors.m5.init(1000)
-    T = Thread(target=motors.m5.left, args=[1])
-    T.start()
 
     motors.m6.init(1000)
-    T2 = Thread(target=motors.m6.left, args=[1])
+    T2 = Thread(target=motors.m6.left, args=[8.5])
     T2.start()
+
+    motors.m5.init(1000)
+    motors.m5.right(12.5)
+
+    motors.m5.stop()
+    motors.m6.stop()
+
+    sleep(5)
 
     
 def licht_on():
