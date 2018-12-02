@@ -9,14 +9,20 @@ GPIO.setmode(GPIO.BCM)
 
 # Verwendete Pins des ULN2003A auf die Pins des Rapberry Pi
 # zugeordnet
-IN1=2 # IN1
-IN2=3 # IN2
+IN1=14 # IN1
+IN2=15 # IN2
 IN3=4 # IN3
 IN4=17 # I
 
 # Wartezeit regelt die Geschwindigkeit wie schnell sich der Motor
 # dreht.
 TIME = 0.001
+
+
+GPIO.setup(IN1,GPIO.OUT,0)
+GPIO.setup(IN2,GPIO.OUT,0)
+GPIO.setup(IN3,GPIO.OUT,0)
+GPIO.setup(IN4,GPIO.OUT,0)
 
 def Step1():
     GPIO.output(IN4, True)

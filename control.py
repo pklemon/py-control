@@ -2,6 +2,7 @@ from threading import Thread
 import signal
 import RPi.GPIO as GPIO
 from time import sleep
+import pyxhook
 
 import motors.m1
 import motors.m2
@@ -50,26 +51,25 @@ def szene2():
     sleep(15)
 
     light.control.l2_off()
-    
     sleep(20)
-
-    sound.control.text4()
 
 def szene3():
     light.control.l3_on()
+    T = Thread(target=sound.control.text4)
+    T.start()
     motors.m3.init(1000)
-    motors.m3.right(12)
+    motors.m3.right(11)
     sound.control.lied3_1()
-    motors.m3.right(2)
+    motors.m3.right(5)
     sound.control.lied3_2()
-    motors.m3.right(4)
+    motors.m3.right(6)
     sound.control.lied3_3()
 
     motors.m3.init(1000)
-    T = Thread(target=motors.m3.right, args=[12])
+    T = Thread(target=motors.m3.right, args=[20.5])
     T.start()
 
-    sleep(10)
+    sleep(20)
 
     light.control.l3_off()
 
@@ -135,24 +135,106 @@ def licht_off():
     light.control.l5_off()
     light.control.l6_off()
 
+def mainSequence():
+  licht_off()
+  intro()
+  szene1()
+  szene2()
+  szene3()
+  szene4()
+  sleep(3)
+  szene5()
+  szene6()
+  sleep(10)
+  licht_on()
 
-def main():
-    try:
-        
-        licht_off()
+def kbevent(event):
+  global running
+  print(event.ScanCode)
+  code = event.ScanCode
+  
 
-        intro()
-        szene1()
-        szene2()
-        szene3()
-        szene4()
-        sleep(3)
-        szene5()
-        szene6()
-    except KeyboardInterrupt:
-        pass
-    finally:
-        GPIO.cleanup()
+  if code == 90
+    running = False
 
-if __name__ == '__main__':
-    main()
+  if code == 89
+    licht_on()
+  
+  if code == 91
+    licht_off()
+
+  if code == 104
+    s = Thread(target=mainSequence)
+    s.start()
+
+  if code == 77
+    motors.m1.init(1000)
+    motors.m1.left(0.25)
+    motors.m1.stop()
+  
+  if code == 106
+    motors.m1.init(1000)
+    motors.m1.right(0.25)
+    motors.m1.stop()
+
+  if code == 63
+    motors.m2.init(1000)
+    motors.m2.left(0.25)
+    motors.m2.stop()
+  
+  if code == 82
+    motors.m2.init(1000)
+    motors.m2.right(0.25)
+    motors.m2.stop()
+
+  if code == 79
+    motors.m3.init(1000)
+    motors.m3.left(0.25)
+    motors.m3.stop()
+  
+  if code == 80
+    motors.m3.init(1000)
+    motors.m3.right(0.25)
+    motors.m3.stop()
+
+  if code == 81
+    motors.m4.init(1000)
+    motors.m4.left(0.25)
+    motors.m4.stop()
+  
+  if code == 86
+    motors.m4.init(1000)
+    motors.m4.right(0.25)
+    motors.m4.stop()
+  
+  if code == 83
+    motors.m5.init(1000)
+    motors.m5.left(0.25)
+    motors.m5.stop()
+  
+  if code == 84
+    motors.m5.init(1000)
+    motors.m5.right(0.25)
+    motors.m5.stop()
+
+  if code == 85
+    motors.m6.init(1000)
+    motors.m6.left(0.25)
+    motors.m6.stop()
+  
+  if code == 22
+    motors.m6.init(1000)
+    motors.m6.right(0.25)
+    motors.m6.stop()
+
+
+hm = pyxhook.HookManager()
+hm.KeyDown = kbevent
+hm.HookKeyboard()
+hm.start()
+
+running = True
+while running
+  sleep(0.1)
+
+hookman.cancel()
